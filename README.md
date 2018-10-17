@@ -1,4 +1,5 @@
-# Employee-Directory
+Assignement 5 - Genie Yang
+
 # Employee Directory
 
 Please watch this video on single page applications _before_ getting started: <https://youtu.be/_gDMQzNVxQA>
