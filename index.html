@@ -5,13 +5,122 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Employee Directory</title>
+
+  <!-- Link Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Link CSS Style Sheet -->
+  <link href="./assets/css/rest.css" rel="stylesheet">
+  <link href="./assets/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
-  <script src="dom.js"></script>
-  <script src="employeeList.js"></script>
-  <script src="app.js"></script>
+
+<!-- <nav>
+  <div id ="home">Home</div>
+  <div id ="about-us">About Us</div>
+</nav>
+
+<main>
+<section id= "homepage">
+
+</section>
+
+
+</main> -->
+
+<!-- Nav Bar -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Employee Directory <span class="fa fa-address-book"></span> </a>
+  
+    <!-- <div class="row justify-content-center py-3 display-none" id=addEmployee>
+    
+  </div> -->
+  <input type="text" class="form w-25" id="searchName" placeholder=" Employee">
+  <input type="text" class="form w-25 mx-1" id="searchName" placeholder=" Office Number">
+  <input type="text" class="form w-25 mx-1" id="searchName" placeholder=" Phone Number">
+  <button type="button" class="btn btn-light btn-md mx-1" ><span data-feather="search" ></span></button>
+
+
+  <!-- <div class="row justify-content-center py-3 display-none" id="searchEmployee">
+    <input type="text" class="form w-25 mx-1" id="searchName" placeholder="Employee">
+    <button type="button" class="btn btn-outline-dark btn-lg mx-1"  >
+      <span class="fa fa-search" ></span>
+    </button> -->
+
+  <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
+
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <span data-feather="users">></span>
+              View
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-plus"></span>
+              Add
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="check-square"></span>
+              Verify
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="edit"></span>
+              Update
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">
+              <span data-feather="delete"></span>
+              Delete
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <div class="row" id="listContent">
+      <div class="content"></div>
+    </div>
+    
+  </div>
+</div>
+
+
+  <!-- Link JS Files -->
+  <script src="./assets/js/dom.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/employeeList.js"></script>
+
+
+  <!-- Link JQuery and JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
+ 
 
 </body>
 
