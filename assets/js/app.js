@@ -14,7 +14,7 @@ const reset = function()
 }
 reset();
 
-const showAdd = function() 
+const displayAdd = function() 
 {
   reset();
   $('#name').removeClass('d-none');
@@ -24,7 +24,7 @@ const showAdd = function()
   $('#inputNav').removeClass('d-none');
 }
 
-const showSearch = function()
+const displaySearch = function()
  {
   reset();
   $('#name').removeClass('d-none');
@@ -38,7 +38,7 @@ const showContent = function()
   $('#showContent').removeClass('d-none');
 }
 
-const showDelete = function() 
+const displayDelete = function() 
 {
   reset();
   $('#name').removeClass('d-none');
@@ -46,14 +46,13 @@ const showDelete = function()
   $('#inputNav').removeClass('d-none');
 }
 
-const showUpdate = function()
+const displayUpdate = function()
  {
   reset();
   $('#name').removeClass('d-none');
   $('#officeNumber').removeClass('d-none');
   $('#phoneNumber').removeClass('d-none');
   $('#editButton').removeClass('d-none');
-  // $('#inputNav').removeClass('d-none');
 }
 
 // 1. Render all of the names in `employeeList` individually in paragraph tags to the div with the class `content`.
@@ -115,7 +114,9 @@ const verifyEmp = function()
   const searchName = $('#name').val();
   const index = employeeList.findIndex((obj => obj.name == searchName));
   $('.content').empty();
-  if (index > -1) 
+  
+  //Search for the index of each item in the arraylist
+  if (index !== -1) 
   {
     $('.content').append(`<p>Yes</p>`);
   } 
@@ -142,7 +143,11 @@ const updateEmp = function()
 //5. A `Delete` option that deletes the employee with the matching name and then renders the updated employee list.
 const deleteEmp = function() 
 {
+
   const deleteName = $('#name').val();
+  
+  //Using findIndex method to find index of name entered in
+  // The splice method will then be used to remove that 1 element at is at that index that was searched for.
   const index = employeeList.findIndex((obj => obj.name == deleteName));
   employeeList.splice(index, 1);
   render();
@@ -150,13 +155,13 @@ const deleteEmp = function()
 }
 
 
-//Call Button functions
+//Call all button functions
 
 $('#view').on('click', showContent);
-$('#add').on('click', showAdd);
-$('#delete').on('click', showDelete);
-$('#edit').on('click', showUpdate);
-$('#verify').on('click', showSearch);
+$('#add').on('click', displayAdd);
+$('#delete').on('click', displayDelete);
+$('#edit').on('click', displayUpdate);
+$('#verify').on('click', displaySearch);
 $('#addButton').on('click', addEmp);
 $('#deleteButton').on('click', deleteEmp);
 $('#searchButton').on('click', verifyEmp);
