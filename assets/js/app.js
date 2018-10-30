@@ -1,23 +1,22 @@
-// const resetInputs = function()
-// {
-//   $('#inputRow').addClass('d-none');
-//   $('#nameInput').addClass('d-none');
-//   $('#officeInput').addClass('d-none');
-//   $('#phoneInput').addClass('d-none');
-//   $('#addButton').addClass('d-none');
-//   $('#deleteButton').addClass('d-none');
-//   $('#searchButton').addClass('d-none');
-//   $('#editButton').addClass('d-none');
-//   $('#showContent').addClass('d-none');
-//   $('#name').val('');
-//   $('#officeNumber').val('');
-//   $('#phoneNumber').val('');
-// }
-// resetInputs();
+const reset = function()
+{
+  $('#name').addClass('d-none');
+  $('#officeNumber').addClass('d-none');
+  $('#phoneNumber').addClass('d-none');
+  $('#addButton').addClass('d-none');
+  $('#deleteButton').addClass('d-none');
+  $('#searchButton').addClass('d-none');
+  $('#editButton').addClass('d-none');
+  $('#showContent').addClass('d-none');
+  $('#name').val('');
+  $('#officeNumber').val('');
+  $('#phoneNumber').val('');
+}
+reset();
 
 const showAdd = function() 
 {
-  resetInputs();
+  reset();
   $('#name').removeClass('d-none');
   $('#officeNumber').removeClass('d-none');
   $('#phoneNumber').removeClass('d-none');
@@ -27,39 +26,39 @@ const showAdd = function()
 
 const showSearch = function()
  {
-  resetInputs();
+  reset();
   $('#name').removeClass('d-none');
   $('#searchButton').removeClass('d-none');
-  $('#inputNav').removeClass('d-none');
 }
 
 const showContent = function() 
 {
-  resetInputs();
+  reset();
   render();
   $('#showContent').removeClass('d-none');
 }
 
 const showDelete = function() 
 {
-  resetInputs();
+  reset();
   $('#name').removeClass('d-none');
   $('#deleteButton').removeClass('d-none');
   $('#inputNav').removeClass('d-none');
 }
 
-const showUpdate = function() {
-  resetInputs();
+const showUpdate = function()
+ {
+  reset();
   $('#name').removeClass('d-none');
   $('#officeNumber').removeClass('d-none');
   $('#phoneNumber').removeClass('d-none');
   $('#editButton').removeClass('d-none');
-  $('#inputNav').removeClass('d-none');
+  // $('#inputNav').removeClass('d-none');
 }
 
 // 1. Render all of the names in `employeeList` individually in paragraph tags to the div with the class `content`.
 
-const theCard = function (name, officeNum, phoneNum) 
+const employeeCard = function (name, officeNum, phoneNum) 
 {
     return ` <br> 
     <div class="card" style="width: 18rem;">
@@ -78,14 +77,14 @@ const render = function()
 {
     $('.content').empty();
 
-    for (i = 0; i < employeeList.length; i++) 
+    for (let i = 0; i < employeeList.length; i++) 
     {
 
-      var name = employeeList[i].name;
-      var officeNum = employeeList[i].officeNum;
-      var phoneNum = employeeList[i].phoneNum;
+      var viewName = employeeList[i].name;
+      var viewOfficeNum = employeeList[i].officeNum;
+      var viewPhoneNum = employeeList[i].phoneNum;
 
-      $('.content').append(theCard(name, officeNum, phoneNum));
+      $('.content').append(employeeCard(viewName, viewOfficeNum, viewPhoneNum));
 
     }
   }
@@ -99,39 +98,66 @@ const render = function()
 
 //   3. An `Add` option that allows users to input name, office number, and phone number and then renders the updated employee list.
   
-  const add = function()
+  const addEmp = function()
   {
-      const addName = $('#name').val();
-      const addOfficeNum = $('#officeNumber').val();
-      const addPhoneNum = $('#officeNumber').val();
-      employeeList.push({"name":addName,"officeNum":addOfficeNum,"phoneNum":addPhoneNum});
-
+      const addNewName = $('#name').val();
+      const addNewOffice = $('#officeNumber').val();
+      const addNewPhone = $('#phoneNumber').val();
+      employeeList.push({"name":addNewName,"officeNum":addNewOffice,"phoneNum":addNewPhone});
       render();
-
-      //Clear the fields and remove class
       $('#showContent').removeClass('d-none');
   }
 
 //   4. A `Verify` option that allows users to input a name and renders `yes` if the employee exists and `no` otherwise.
 
-const verify = function()
+const verifyEmp = function()
 {
-  const searchName = $('#nameInput').val();
+  const searchName = $('#name').val();
   const index = employeeList.findIndex((obj => obj.name == searchName));
   $('.content').empty();
-  if (index > -1) {
+  if (index > -1) 
+  {
     $('.content').append(`<p>Yes</p>`);
-  } else {
+  } 
+  else
+   {
     $('.content').append(`<p>No</p>`);
   }
+
   $('#showContent').removeClass('d-none');
 }
 
 
-
-$('#view').on('click', view);
-
 // 4. An `Update` option that allows the user to input name, office number, and phone number and updates the office number and phone number of the employee that matches the input name, and then renders the updated employee list.
-
+const updateEmp = function() 
+{
+  const updateName = $('#name').val();
+  const index = employeeList.findIndex((obj => obj.name == updateName));
+  employeeList[index].officeNum = $('#officeNumber').val();
+  employeeList[index].phoneNum = $('#phoneNumber').val();
+  render();
+  $('#showContent').removeClass('d-none');
+}
 
 //5. A `Delete` option that deletes the employee with the matching name and then renders the updated employee list.
+const deleteEmp = function() 
+{
+  const deleteName = $('#name').val();
+  const index = employeeList.findIndex((obj => obj.name == deleteName));
+  employeeList.splice(index, 1);
+  render();
+  $('#showContent').removeClass('d-none');
+}
+
+
+//Call Button functions
+
+$('#view').on('click', showContent);
+$('#add').on('click', showAdd);
+$('#delete').on('click', showDelete);
+$('#edit').on('click', showUpdate);
+$('#verify').on('click', showSearch);
+$('#addButton').on('click', addEmp);
+$('#deleteButton').on('click', deleteEmp);
+$('#searchButton').on('click', verifyEmp);
+$('#editButton').on('click', updateEmp);
