@@ -10,6 +10,7 @@ body {
   
   /*
    * Sidebar
+   https://www.atlascode.com/blog/bootstrap-fixed-width-sidebars/
    */
   
   .sidebar {
@@ -17,9 +18,13 @@ body {
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 100; /* Behind the navbar */
-    padding: 48px 0 0; /* Height of navbar */
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
   }
   
   .sidebar-sticky {
@@ -99,4 +104,6 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
+
+
   
